@@ -152,7 +152,7 @@ Artifacts appear in:
 
 1. **Write image to SD card**  
    ```bash
-   sudo dd if=tmp/deploy/images/raspberrypi4/core-image-minimal-raspberrypi4-64.sdimg \
+   sudo dd if=tmp/deploy/images/raspberrypi4/core-image-minimal-raspberrypi4-64.rpi-sdimg \
      of=/dev/sdX bs=4M conv=fsync status=progress
    ```
 
