@@ -15,9 +15,7 @@ Welcome to the **Graduation-Project-Automotive-ECE25** Yocto repository. This pr
 7. [Flashing & Testing](#flashing--testing)  
 8. [Custom Layer: `meta-assem`](#custom-layer-meta-assem)  
 9. [Adding New Recipes](#adding-new-recipes)  
-10. [Troubleshooting & Tips](#troubleshooting--tips)  
-11. [Roadmap & Contributing](#roadmap--contributing)  
-12. [License](#license)  
+10. [Troubleshooting & Tips](#troubleshooting--tips)   
 
 ---
 
