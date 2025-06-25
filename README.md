@@ -208,22 +208,3 @@ Layer metadata is defined in `meta-assem/conf/layer.conf`. Increase its priority
 _For deeper dives, consult the [Yocto Project Mega-Manual](https://www.yoctoproject.org/docs/)._
 
 ---
-
-## Roadmap & Contributing
-
-Planned enhancements:
-
-- Full Qt5/Qt6-based IVI UI with touchscreen calibration  
-- CAN diagnostics integration using SocketCAN  
-- In-vehicle encryption module with TPM support  
-
-Contributions are welcome! Fork, open an issue, or submit a pull request. Please follow our [CONTRIBUTING.md](CONTRIBUTING.md) guidelines.
-
----
-
-## License
-
-This repository is released under the **MIT License**. See [LICENSE](LICENSE) for details.  
-```
-
-— Happy building! If you run into any blockers or want to integrate new automotive features (CAN, LIN, FlexRay, TPM), let me know and we can dive deeper.
