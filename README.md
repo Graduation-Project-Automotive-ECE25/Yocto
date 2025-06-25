@@ -54,12 +54,12 @@ Before you begin, ensure you have:
 
 ```text
 .
-├── conf/
+├── raspberrypi4/conf/
 │   ├── bblayers.conf       # Yocto layers list
 │   └── local.conf          # Build settings (MACHINE, parallelism, proxies)
 ├── meta-assem/             # Custom automotive Yocto layer
-│   ├── conf/
-│   │   └── layer.conf      # Layer metadata & priority
+│   ├── conf/distro
+│   │   └── adas.conf       # Custom distribution
 │   └── recipes-*/          # Custom recipes (UI, middleware, utils)
 ├── .gitignore
 └── README.md               # This file
@@ -74,7 +74,7 @@ Before you begin, ensure you have:
 
 1. **Clone Poky**  
    ```bash
-   git clone -b dunfell git://git.yoctoproject.org/poky.git
+   git clone -b kirkstone git://git.yoctoproject.org/poky.git
    cd poky
    ```
 
