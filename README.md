@@ -88,20 +88,22 @@ Before you begin, ensure you have:
 
 3. **Initialize Build Environment**  
    ```bash
-   source oe-init-build-env build
+   source oe-init-build-env raspberrypi4
    ```
 
 ---
 
 ## Configuring the Build
 
-Navigate into your new `build/` directory. Inside `conf/`, you’ll find:
+Navigate into your new `raspberrypi4/` directory. Inside `conf/`, you’ll find:
 
 - **`bblayers.conf`**: Add your layers here:
   ```ini
   BBLAYERS ?= " \
     ${TOPDIR}/../poky/meta \
     ${TOPDIR}/../poky/meta-poky \
+    ${TOPDIR}/../poky/meta-yocto-bsp \
+    ${TOPDIR}/../poky/meta-qt6 \
     ${TOPDIR}/../meta-openembedded/meta-oe \
     ${TOPDIR}/../meta-openembedded/meta-python \
     ${TOPDIR}/../meta-raspberrypi \
@@ -111,12 +113,12 @@ Navigate into your new `build/` directory. Inside `conf/`, you’ll find:
 
 - **`local.conf`**: Key settings to review:
   ```ini
-  MACHINE = "raspberrypi4"
+  MACHINE = "raspberrypi4-64"
   BB_NUMBER_THREADS = "${@oe.utils.cpu_count()}"
   PARALLEL_MAKE = "-j${@oe.utils.cpu_count()}"
   SSTATE_DIR ?= "${TOPDIR}/../sstate-cache"
   DL_DIR ?= "${TOPDIR}/../downloads"
-  CONF_VERSION = "1"
+  CONF_VERSION = "2"
   # Uncomment to enable ccache
   # INHERIT += "ccache"
   # ENABLE UART or CAN specifics via DISTRO_FEATURES
@@ -137,9 +139,9 @@ _Tip:_ Adjust `MACHINE` to match your target hardware, e.g., `raspberrypi4-64`.
    ```bash
    bitbake core-image-minimal
    ```
-   Or build your custom image recipe (e.g., `my-ivi-image`):
+   Or build your custom image recipe (e.g., `adas-image`):
    ```bash
-   bitbake my-ivi-image
+   bitbake adas-image
    ```
 
 Artifacts appear in:
@@ -152,7 +154,7 @@ Artifacts appear in:
 
 1. **Write image to SD card**  
    ```bash
-   sudo dd if=tmp/deploy/images/raspberrypi4/core-image-minimal-raspberrypi4.wic \
+   sudo dd if=tmp/deploy/images/raspberrypi4/core-image-minimal-raspberrypi4-64.sdimg \
      of=/dev/sdX bs=4M conv=fsync status=progress
    ```
 
@@ -171,7 +173,7 @@ Artifacts appear in:
 This layer encapsulates:
 
 - **Custom recipes** under `recipes-*/`  
-- **Image definitions**, e.g., `recipes-images/my-ivi-image/my-ivi-image.bb`  
+- **Image definitions**, e.g., `recipes-core/images/adas-image.bb`  
 - **Configuration fragments** (`.bbappend`) for tuning third-party packages  
 - **Distro features** (CAN bus, Qt, GPU acceleration)
 
